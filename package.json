@@ -1,0 +1,51 @@
+{
+  "name": "react-boiler-plate",
+  "version": "1.0.0",
+  "description": "Application for monitoring the spread of covid-19",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run eslint",
+    "eslint": "eslint src/**/*.js",
+    "dev": "webpack-dev-server --history-api-fallback --inline --open",
+    "build": "npm run clear -s && webpack --progress",
+    "clear": "del-cli dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OlegMikhailov23/covid-dashboard"
+  },
+  "author": "Team",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.13.1",
+    "@babel/preset-env": "^7.13.5",
+    "@babel/preset-react": "^7.12.13",
+    "autoprefixer": "^10.0.2",
+    "babel-loader": "^8.2.2",
+    "copy-webpack-plugin": "^6.3.2",
+    "css-loader": "^5.0.1",
+    "css-mqpacker": "^7.0.0",
+    "cssnano": "^4.1.10",
+    "del-cli": "^3.0.1",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.22.0",
+    "file-loader": "^6.2.0",
+    "html-loader": "^1.3.2",
+    "html-webpack-plugin": "^4.5.0",
+    "image-webpack-loader": "^7.0.1",
+    "mini-css-extract-plugin": "^1.3.1",
+    "postcss-loader": "^4.1.0",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.1.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "4.41.2",
+    "webpack-cli": "3.3.9",
+    "webpack-dev-server": "3.8.2"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}

@@ -1,0 +1,174 @@
+// Настройки шрифта
+@mixin fontpref($size, $lineheigth, $weight) {
+  font-size: $size;
+  line-height: $lineheigth;
+  font-family: inherit;
+  font-weight: $weight
+}
+
+// Бэкграунд на всю ширину экрана.
+// пример: @include cover-background("../img/main.jpg", top, center, scroll);
+@mixin cover-background($img-uri, $background-top: "center", $background-left: "center", $background-attachment: "fixed") {
+  background: url($img-uri) no-repeat unquote($background-top) unquote($background-left) unquote($background-attachment);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+// трансформация, плавный переход
+// пример: @include transit(color,.2s,ease-in-out);
+@mixin transit($what: all, $when: 0.25s, $how: ease) {
+  -webkit-transition: $what $when $how;
+  -moz-transition: $what $when $how;
+  -ms-transition: $what $when $how;
+  -o-transition: $what $when $how;
+  transition: $what $when $how
+}
+
+// тень текста
+// пример: @include ts(1px,1px,3px,$red);
+@mixin text-sh($x, $y, $blur, $color) {
+  text-shadow: $x $y $blur $color
+}
+
+// тень блока
+// пример: @include bsh(1px,1px,3px,0,$gray,inset);
+@mixin bsh($top, $left, $blur, $size, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $top $left $blur $size $color;
+    -moz-box-shadow: inset $top $left $blur $size $color;
+    box-shadow: inset $top $left $blur $size $color;
+  }
+
+  @else {
+    -webkit-box-shadow: $top $left $blur $size $color;
+    -moz-box-shadow: $top $left $blur $size $color;
+    box-shadow: $top $left $blur $size $color;
+  }
+}
+
+// горизонтальное выравнивание для inline блока
+// пример: @include justify;
+@mixin justify {
+  text-align: justify;
+  line-height: 0;
+  font-size: 0;
+  text-justify: newspaper;
+  zoom: 1;
+  text-align-last: justify;
+
+  &:after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 0px;
+    visibility: hidden;
+  ;
+    overflow: hidden;
+  }
+}
+
+// вертикальное выравнивание для inline блока
+// пример: @include vertical
+@mixin vertical {
+  text-align: center;
+  font-size: 0;
+
+  &:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 100%;
+  }
+}
+
+@mixin push--auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+@mixin my-border($color, $width) {
+  border: {
+    color: $color;
+    width: $width;
+    style: dashed;
+  }
+}
+
+@mixin input-placeholder {
+  &.placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+
+// Центрируем контейнер
+@mixin container() {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+// Стандартные стили к default
+@mixin zero-style() {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  border-collapse: collapse;
+}
+
+// Заготовка кнопки
+@mixin btn() {
+  display: block;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  border-radius: 30px;
+  cursor: pointer;
+  @include padding-left-right (5px, 5px);
+  @include padding-top-bottom (5px, 5px);
+  @include font-size (10px, 12px);
+  text-transform: uppercase;
+  color: $main-font-color;
+  background-color: $submit-btn-bg;
+  font-family: inherit;
+  outline: none;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ffeb81;
+    transition: 0.3s;
+  }
+
+  &:active {
+    color: rgba(255, 255, 255, 0.3);
+    transition: 0.3s;
+  }
+}
